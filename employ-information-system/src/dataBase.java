@@ -4,14 +4,14 @@ import java.sql.SQLRecoverableException;
 import java.text.Format;
 
 public class dataBase {
-    public admindo admindo=new admindo();
+    //public admindo admindo=new admindo();
     int count = 0;
     public employ[] employs;
     public admindo[] employtask;
     public void system(int number) {
         employs = new employ[number];
         employtask = new admindo[number];
-    }
+    }//Determine the initial employee array length based on the number of input employees entered in main
     public boolean isFull() {
         return count == employs.length;
     }
@@ -19,7 +19,6 @@ public class dataBase {
         return count == 0;
     }
     public boolean add(employ employ1) {
-
         if (isFull()) {
             if (employs[count - 1] == null) {
                 employs[count - 1] = employ1;
@@ -36,7 +35,7 @@ public class dataBase {
             }
             return true;
         }
-    }
+    }//Use the defined isFull and isEmpty methods to determine and store the added information in the newly created array employs.
     public String list(){
         String listOfEmployeeInformation="";
         if(isEmpty()){
@@ -50,7 +49,7 @@ public class dataBase {
             }
         }
         return listOfEmployeeInformation;
-    }
+    }//Use the defined isFull and isEmpty methods to determine and store the added information in the newly created array employs.
     public void deleteEmployee(String ID){
         for (int i = 0; i < employs.length; i++) {
             if(employs[i]!=null) {
@@ -74,7 +73,7 @@ public class dataBase {
                 break;
             }
         }
-    }
+    }//When there is a employ information in the i+1st space of the array employs, provide the service of deleting the information.
     public employ find(String ID){
         employ queryEmployee=null;
         if(isEmpty()){
@@ -111,7 +110,7 @@ public class dataBase {
                 }
             }
         }
-    }
+    }//Checks whether the information is consistent and assigns the information entered by the administrator to array employs in the set method
     public boolean changeInformation(String ID){
         for (int i = 0; i < employs.length; i++) {
             if(employs[i]!=null){
@@ -121,7 +120,7 @@ public class dataBase {
             }
         }
         return false;
-    }
+    }//This is to get a check before changing employee information
     public employ taskIDtest(String employeeID){
         employ IDtask=null;
         if(isEmpty()){
@@ -138,7 +137,7 @@ public class dataBase {
             }
         }
         return IDtask;
-    }
+    }//Joins an idtask object of a employ class and assigns information about the corresponding employee to idtask through detection
     public void release(String tasks,String ID){
         for (int i = 0; i <employs.length; i++) {
             if(employs[i] != null &&employs[i].getID().equals(ID)) {
@@ -146,14 +145,11 @@ public class dataBase {
                 System.out.println("Task added successfully");
             }
         }
-    }
+    }//The employs array is traversed to obtain information about the corresponding position and then task is assigned to the employtask array at the same position
     public void update(admindo origin){
         for(int j=0;j<employs.length;j++){
             employtask[j]=origin;
-
-
         }
-
     }
     //user
     public admindo taskquery(String employeeID){
@@ -170,7 +166,7 @@ public class dataBase {
             }
         }
         return IDtask;
-    }
+    }//Initialize admindo's idtask, use isempty to determine whether to operate, and then go through the number group to get the corresponding id and get the task'.
 
 
 

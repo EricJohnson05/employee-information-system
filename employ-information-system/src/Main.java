@@ -19,18 +19,18 @@ import java.util.Scanner;
            (4)Exit
 */
 public class Main {
-    public dataBase ourcompany=new dataBase();
-    public admin admin=new admin();
+    public dataBase ourcompany=new dataBase();//Add an object called ourcompany to the database
+    public admin admin=new admin();//Add an object called admin to the admin
     public Scanner input=new Scanner(System.in);
-    int count =0;
+    int count =0;//This parameter is used to determine whether the administrator mode is entered for the first time
     public static void main(String[] args) {
         System.out.println("Welcome to the company's employee identity information data processing system");
-        Main driver=new Main();
+        Main driver=new Main();//Add a driver object to main to prevent stack overflow due to too many methods
         driver.initialize();
         driver.setup();
     }
     public void initialize(){
-        admin.setPassword(String.valueOf(123456));
+        admin.setPassword(String.valueOf(123456));//set origin password
 
     }
     public int mainMenu(){
@@ -69,7 +69,7 @@ public class Main {
         }
         System.out.println("exiting,bye!");
         System.exit(0);
-    }
+    }//Execute method according to user input information
     public void setup(){
         System.out.println("What is your login method? user/admin");
         String loginMethod =input.next();
@@ -107,7 +107,7 @@ public class Main {
         else {
             System.out.println("No employee information entered");
         }
-    }
+    }//Employee information is entered into an array of the ourcompany object and checked for success
     public void printlist(){
         System.out.println("employees are");
         System.out.println(ourcompany.list());
@@ -125,7 +125,7 @@ public class Main {
         if(queryEmployee==null){
             System.out.println("There are no employ with the ID [" + ID + "] in the system.");
         }
-    }
+    }//Query employee information by id and detect
     public void changeEmployeeInformation(){
         System.out.println("enter the ID of the employee you want to change");
         String ID=input.next();
@@ -145,7 +145,7 @@ public class Main {
         else {
             System.out.println("what you want to change doesn't exist");
         }
-    }
+    }//Change employee information and reference different methods through the switch method
     public void changePhonenumber(){
         System.out.println("Enter your new phone number");
         String phonenumber=input.next();
@@ -170,12 +170,12 @@ public class Main {
         System.out.println("Enter the task you want to release");
         String tasks =input.next();
         ourcompany.release(tasks,employeeID);
-    }
+    }//release task
     public void Changepassword(){
         System.out.println("Enter your new password");
         String newpwd =input.next();
         admin.change(newpwd);
-    }
+    }// change a password, is a method in the admin object
     public void check(){
         System.out.println("You have 3 chances to enter the password");
         System.out.println("//tip: Initial password: 123456, the administrator can change after entering the system");
@@ -204,10 +204,10 @@ public class Main {
             System.out.println("Failed login");
             setup();
         }
-    }
+    }//Password verification and executive admin menu
     public void Backmenu(){
         setup();
-    }
+    }//Return to the main menu and select a new mode
     //user
     public void user(){
         System.out.println("What do you want to do? ");
@@ -237,7 +237,7 @@ public class Main {
         else{
             user();
         }
-    }
+    }//Task query, and detect whether there is this for the employee, if not then call the user method to redo
     public void view(){
         input.nextLine();
         System.out.println("enter your ID");
