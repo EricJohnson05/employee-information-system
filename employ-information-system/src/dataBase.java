@@ -82,7 +82,7 @@ public class dataBase {
         else{
             for(int i=0;i<count;i++){
                 boolean result;
-                result= employs[i].getID().contains(ID);
+                result=employs[i] != null && employs[i].getID().contains(ID);
                 if(result) {
                     queryEmployee =  employs[i];
                     System.out.print("name:" + queryEmployee.getName() + " gender:" + queryEmployee.getGender() + " ID:" + queryEmployee.getID() +  " dateOfbirth:" + queryEmployee.getDateOfBirth()+  " phoneNumber:" + queryEmployee.getPhoneNumber()+  " position:" + queryEmployee.getPosition()+"\n");
@@ -94,8 +94,9 @@ public class dataBase {
     public void changephnumber(String phonenumber){
         for (int i = 0; i < employs.length; i++) {
             if(employs[i]!=null){
-                if(employs[i].getPhoneNumber().equals(phonenumber)){
+                if(!employs[i].getPhoneNumber().equals(phonenumber)){
                     employs[i].setPhoneNumber(phonenumber);
+                    System.out.println("Succeeded in modifying information");
                     break;
                 }
             }
@@ -104,8 +105,9 @@ public class dataBase {
     public void changeposition(String position){
         for (int i = 0; i < employs.length; i++) {
             if(employs[i]!=null){
-                if(employs[i].getPosition().equals(position)){
+                if(!employs[i].getPosition().equals(position)){
                     employs[i].setPosition(position);
+                    System.out.println("Succeeded in modifying information");
                     break;
                 }
             }

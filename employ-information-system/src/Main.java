@@ -134,15 +134,13 @@ public class Main {
             System.out.println("1. Phone number");
             System.out.println("2. Position");
             int choice = input.nextInt();
-            while (choice != 0) {
                 switch (choice) {
                     case 1 -> changePhonenumber();
                     case 2 -> changePosition();
                     default -> System.out.println("Invalid choice entered" + choice);
                 }
-            }
         }
-        else {
+         else{
             System.out.println("what you want to change doesn't exist");
         }
     }//Change employee information and reference different methods through the switch method
@@ -155,6 +153,7 @@ public class Main {
     public void changePosition(){
         System.out.println("Enter your new Position");
         String position=input.next();
+
         ourcompany.changeposition(position);
 
     }
